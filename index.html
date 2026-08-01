@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tethinhz.shop — Chợ Acc Game Uy Tín</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#121318',
+            surface: '#1e1f25',
+            high: '#282a2f',
+            primary: '#a8c7fa',
+            secondary: '#e8def8',
+            line: '#2d2f36',
+          },
+          fontFamily: {
+            sans: ['Roboto', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            glow: '0 8px 40px -8px rgba(168,199,250,0.35)',
+            card: '0 12px 40px -12px rgba(0,0,0,0.55)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    html, body { font-family: 'Roboto', sans-serif; background: #121318; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes scaleIn { from { opacity: 0; transform: scale(.92) translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    .animate-fade-up { animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both; }
+    .animate-scale-in { animation: scaleIn .28s cubic-bezier(.16,1,.3,1) both; }
+    .animate-toast { animation: toastIn .3s cubic-bezier(.16,1,.3,1) both; }
+    .animate-floaty { animation: floaty 5s ease-in-out infinite; }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #121318; }
+    ::-webkit-scrollbar-thumb { background: #2d2f36; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3a3d46; }
+  </style>
+</head>
+<body class="bg-base text-white antialiased selection:bg-primary/30">
+
+  <header class="fixed top-0 inset-x-0 z-40">
+    <div class="bg-base/80 backdrop-blur-xl border-b border-line/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3 sm:gap-4">
+        <a href="#" class="flex items-center gap-2.5 shrink-0">
+          <span class="w-9 h-9 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-glow">
+            <i data-lucide="gamepad-2" class="w-5 h-5 text-base"></i>
+          </span>
+          <span class="text-base sm:text-lg font-black tracking-tight leading-none">
+            <span class="text-primary">tethinhz</span><span class="text-white/60">.shop</span>
+          </span>
+        </a>
+
+        <div class="hidden md:flex flex-1 max-w-md items-center gap-3 rounded-full bg-surface border border-line px-4 transition focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+          <i data-lucide="search" class="w-4 h-4 text-primary shrink-0"></i>
+          <input id="searchInput" oninput="setSearch(this.value)" placeholder="Tìm kiếm tài khoản..." autocomplete="off" class="bg-transparent outline-none py-2.5 text-sm w-full placeholder:text-white/30">
+        </div>
+
+        <button onclick="toggleMobileSearch()" class="md:hidden ml-auto w-10 h-10 rounded-full bg-surface border border-line flex items-center justify-center hover:bg-high transition">
+          <i data-lucide="search" class="w-4.5 h-4.5 text-primary"></i>
+        </button>
+
+        <a href="#" class="hidden sm:flex items-center gap-2 rounded-full bg-high border border-line px-4 py-2.5 text-sm font-medium hover:bg-[#2f3138] hover:border-primary/40 transition shrink-0">
+          <i data-lucide="package" class="w-4 h-4 text-secondary"></i>
+          Tra cứu đơn
+        </a>
+      </div>
+
+      <div id="mobileSearch" class="hidden md:hidden px-4 pb-3">
+        <div class="flex items-center gap-3 rounded-full bg-surface border border-line px-4 transition focus-within:border-primary">
+          <i data-lucide="search" class="w-4 h-4 text-primary shrink-0"></i>
+          <input oninput="setSearch(this.value)" placeholder="Tìm kiếm tài khoản..." autocomplete="off" class="bg-transparent outline-none py-2.5 text-sm w-full placeholder:text-white/30">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-28 md:pb-16">
+
+    <section class="animate-fade-up">
+      <div class="relative overflow-hidden rounded-[28px] bg-surface border border-line shadow-card">
+        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/25 blur-3xl animate-floaty"></div>
+        <div class="absolute -bottom-32 -left-16 w-80 h-80 rounded-full bg-secondary/20 blur-3xl"></div>
+        <div class="absolute top-6 right-6 w-40 h-40 rounded-full border border-primary/10 hidden sm:block"></div>
+
+        <div class="relative p-6 sm:p-10 lg:p-12 max-w-2xl">
+          <span class="inline-flex items-center gap-2 rounded-full bg-primary/15 border border-primary/25 px-4 py-1.5 text-xs font-medium text-primary">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            Chợ acc game uy tín số 1 Việt Nam
+          </span>
+
+          <h1 class="mt-5 text-3xl sm:text-5xl font-black leading-tight tracking-tight">
+            Khám Phá Tài Khoản<br>
+            <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Game Chất Lượng Cao</span>
+          </h1>
+
+          <p class="mt-4 text-white/60 text-sm sm:text-base leading-relaxed">
+            Giao acc tự động 100% trong 5 phút, bảo hành trọn đời theo Google Play.
+            Hơn <span class="text-primary font-bold">15.000+</span> giao dịch thành công.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-2.5">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-high border border-line px-4 py-2 text-sm font-medium">
+              ✨ Uy Tín #1
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-high border border-line px-4 py-2 text-sm font-medium">
+              ⚡ Auto 100%
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-high border border-line px-4 py-2 text-sm font-medium">
+              🛡️ Bảo hành 24h
+            </span>
+          </div>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <a href="#products" class="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-bold text-base hover:bg-[#c3d9fc] hover:shadow-glow transition shadow-glow">
+              Xem kho acc
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#" class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-6 py-3 text-sm font-medium text-white/80 hover:bg-high transition">
+              <i data-lucide="message-circle" class="w-4 h-4 text-primary"></i>
+              Hướng dẫn mua
+            </a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-3 gap-4 border-t border-line/70 pt-6">
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-primary">15K+</p>
+              <p class="text-xs text-white/50 mt-1">Giao dịch</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-primary">4.9/5</p>
+              <p class="text-xs text-white/50 mt-1">Đánh giá</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-primary">5 Phút</p>
+              <p class="text-xs text-white/50 mt-1">Giao auto</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="filterBar" class="sticky top-16 z-30 mt-8 bg-base/80 backdrop-blur-xl py-3 -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+      <div class="flex gap-2 overflow-x-auto no-scrollbar pb-1" id="gameChips"></div>
+      <div class="flex gap-2 overflow-x-auto no-scrollbar mt-2 pb-1" id="priceChips"></div>
+    </div>
+
+    <section id="products" class="mt-6 scroll-mt-32">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-bold tracking-tight">Kho acc mới nhất</h2>
+          <p class="text-sm text-white/50 mt-1" id="resultCount"></p>
+        </div>
+        <a href="#" class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-[#c3d9fc] transition shrink-0">
+          Xem thêm
+          <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div id="productGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"></div>
+
+      <div id="emptyState" class="hidden text-center py-16">
+        <span class="inline-flex w-16 h-16 rounded-full bg-surface border border-line items-center justify-center">
+          <i data-lucide="package-search" class="w-7 h-7 text-primary"></i>
+        </span>
+        <p class="mt-4 font-medium">Không tìm thấy tài khoản phù hợp</p>
+        <p class="text-sm text-white/50 mt-1">Thử bỏ bộ lọc hoặc tìm từ khóa khác nhé!</p>
+        <button onclick="resetFilters()" class="mt-4 rounded-full bg-high border border-line px-5 py-2 text-sm font-medium hover:bg-[#2f3138] transition">Đặt lại bộ lọc</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="fixed bottom-0 inset-x-0 z-40 md:hidden bg-base/90 backdrop-blur-xl border-t border-line/70 pb-[env(safe-area-inset-bottom)]">
+    <div class="grid grid-cols-4 h-16">
+      <button class="flex flex-col items-center justify-center gap-1 text-primary" onclick="scrollTop()">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Trang chủ</span>
+      </button>
+      <button class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white/80 transition" onclick="toggleMobileSearch()">
+        <i data-lucide="search" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Tìm kiếm</span>
+      </button>
+      <button class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white/80 transition" onclick="scrollTop()">
+        <i data-lucide="package" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Đơn hàng</span>
+      </button>
+      <button class="flex flex-col items-center justify-center gap-1 text-white/50 hover:text-white/80 transition" onclick="scrollTop()">
+        <i data-lucide="user" class="w-5 h-5"></i>
+        <span class="text-[10px] font-medium">Tài khoản</span>
+      </button>
+    </div>
+  </nav>
+
+  <div id="modal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:p-6">
+    <div id="scrim" class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative w-full sm:max-w-md bg-surface border border-line sm:rounded-[28px] rounded-t-[28px] shadow-card animate-scale-in max-h-[92vh] overflow-y-auto no-scrollbar" id="modalBody"></div>
+  </div>
+
+  <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-24 md:bottom-8 z-[60] pointer-events-none"></div>
+
+  <script>
+    lucide.createIcons();
+
+    const PRODUCTS = [
+      {
+        key: 'lq', game: 'Liên Quân', title: 'VIP Cao Thủ 2000 Sao + 300 Tướng',
+        price: 350000, rank: 'Cao Thủ 2000 sao', icon: 'swords',
+        grad: 'from-primary/30', tags: ['🔥 Rank Cao', '☑️ Auto'],
+        desc: 'Tài khoản rank Cao Thủ 2000 sao, full 300 tướng, ngọc VIP 4, nhiều skin hiếm. Giao auto trong 5 phút, bảo hành trọn đời theo Google Play.',
+        stats: { 'Tướng': '300/117', 'Ngọc': 'VIP 4', 'Skin': '120+' }
+      },
+      {
+        key: 'ff', game: 'Free Fire', title: 'Mỹ Nhân Bơ Vơ + Set Sát Thủ',
+        price: 450000, rank: 'Anh Hùng', icon: 'flame',
+        grad: 'from-secondary/30', tags: ['🌟 Skin Hot', '⚡ Auto 100%'],
+        desc: 'Acc Mỹ Nhân Bơ Vơ, set Sát Thủ, búp bê nhí đầy đủ. Hơn 50 nhân vật, VP thủy tinh khủng, liên kết an toàn.',
+        stats: { 'Nhân vật': '50+', 'Skin': '200+', 'VP': '12.000+' }
+      },
+      {
+        key: 'val', game: 'Valorant', title: 'Full Skin Mùa 1-8 Rank Immortal',
+        price: 1200000, rank: 'Immortal', icon: 'target',
+        grad: 'from-primary/40', tags: ['🎨 Full Skin', '⚡ Auto 100%'],
+        desc: 'Full skin mùa 1 đến mùa 8, rank Immortal, Gun Buddy nhiều, Battle Pass đầy đủ. Pass bằng email gốc.',
+        stats: { 'Skin': '250+', 'Rank': 'Immortal', 'BP': 'Full' }
+      },
+      {
+        key: 'lol', game: 'LMHT', title: 'Cao Thủ 100SK + Full Tướng',
+        price: 250000, rank: 'Cao Thủ 100SK', icon: 'shield',
+        grad: 'from-secondary/30', tags: ['🔥 Rank Cao', '☑️ Auto'],
+        desc: 'Rank Cao Thủ 100 sao, full tướng, nhiều skin sủ dễ chơi, chạy cả 3 mùa xếp hạng. Giao ngay sau thanh toán.',
+        stats: { 'Tướng': 'Full', 'Skin': '80+', 'Rank': 'Cao Thủ' }
+      },
+      {
+        key: 'ff', game: 'Free Fire', title: 'Nhiều Búp Bê + SS Rank Anh Hùng',
+        price: 180000, rank: 'Anh Hùng SS', icon: 'zap',
+        grad: 'from-primary/25', tags: ['🌟 Nhiều VIP', '⚡ Auto 100%'],
+        desc: 'Acc SS Anh Hùng, nhiều búp bê xịn, nhân vật đầy đủ. Giá cực rẻ cho người mới chơi, auto giao trong 5 phút.',
+        stats: { 'Búp bê': '8', 'Nhân vật': '45+', 'Rank': 'Anh Hùng' }
+      },
+      {
+        key: 'lq', game: 'Liên Quân', title: 'VIP Ngọc Full + Tướng Đầy Đủ',
+        price: 600000, rank: 'Thách Đấu', icon: 'crown',
+        grad: 'from-secondary/40', tags: ['💎 VIP', '🛡️ Bảo Hành'],
+        desc: 'Acc VIP ngọc full 5, hơn 400 tướng, nhiều skin tướng hiếm. Bảo hành trọn đời, đổi trả trong 24h nếu có lỗi.',
+        stats: { 'Tướng': '400+', 'Ngọc': 'VIP 5', 'Skin': '180+' }
+      },
+    ];
+
+    const GAME_CHIPS = [
+      { key: 'all', label: 'Tất cả', icon: 'gamepad-2' },
+      { key: 'lq', label: 'Liên Quân', icon: 'swords' },
+      { key: 'ff', label: 'Free Fire', icon: 'flame' },
+      { key: 'val', label: 'Valorant', icon: 'target' },
+      { key: 'lol', label: 'LMHT', icon: 'shield' },
+    ];
+
+    const PRICE_CHIPS = [
+      { key: 'all', label: '💰 Mọi mức giá' },
+      { key: 'low', label: 'Dưới 300k' },
+      { key: 'mid', label: '300k - 1tr' },
+      { key: 'high', label: 'Trên 1tr' },
+    ];
+
+    const state = { game: 'all', price: 'all', search: '' };
+
+    function formatPrice(v) {
+      return v.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function gameChipFor(key) {
+      return GAME_CHIPS.find(c => c.key === key) || GAME_CHIPS[0];
+    }
+
+    function buildGameChips() {
+      document.getElementById('gameChips').innerHTML = GAME_CHIPS.map(c => `
+        <button onclick="setGame('${c.key}')"
+          class="chip flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-all duration-200 ${state.game === c.key ? 'bg-primary text-base shadow-glow' : 'bg-surface border border-line text-white/70 hover:bg-high'}">
+          <i data-lucide="${c.icon}" class="w-4 h-4 ${state.game === c.key ? '' : 'text-secondary'}"></i>
+          ${c.label}
+        </button>`).join('');
+    }
+
+    function buildPriceChips() {
+      document.getElementById('priceChips').innerHTML = PRICE_CHIPS.map(c => `
+        <button onclick="setPrice('${c.key}')"
+          class="chip rounded-full px-4 py-2.5 text-sm whitespace-nowrap transition-all duration-200 ${state.price === c.key ? 'bg-primary/20 border border-primary/40 text-primary font-medium' : 'bg-surface border border-line text-white/60 hover:bg-high'}">
+          ${c.label}
+        </button>`).join('');
+    }
+
+    function setGame(key) { state.game = key; renderChips(); renderProducts(); }
+    function setPrice(key) { state.price = key; renderChips(); renderProducts(); }
+    function setSearch(v) { state.search = v.toLowerCase(); renderProducts(); }
+
+    function priceMatch(p) {
+      if (state.price === 'low') return p < 300000;
+      if (state.price === 'mid') return p >= 300000 && p <= 1000000;
+      if (state.price === 'high') return p > 1000000;
+      return true;
+    }
+
+    function filtered() {
+      return PRODUCTS.filter(p =>
+        (state.game === 'all' || p.key === state.game) &&
+        priceMatch(p.price) &&
+        (p.title.toLowerCase().includes(state.search) || p.game.toLowerCase().includes(state.search))
+      );
+    }
+
+    function renderChips() {
+      buildGameChips();
+      buildPriceChips();
+      lucide.createIcons();
+    }
+
+    function renderProducts() {
+      const list = filtered();
+      const grid = document.getElementById('productGrid');
+      document.getElementById('emptyState').classList.toggle('hidden', list.length > 0);
+      document.getElementById('resultCount').textContent = `Đang hiển thị ${list.length} tài khoản`;
+
+      grid.innerHTML = list.map((p, i) => `
+        <article class="group bg-surface rounded-[20px] border border-line overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-card animate-fade-up" style="animation-delay:${i * 60}ms">
+          <div class="relative aspect-[4/3] bg-gradient-to-br ${p.grad} via-base to-[#181920] overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/10 blur-2xl group-hover:bg-primary/20 transition"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="w-20 h-20 sm:w-24 sm:h-24 rounded-[28px] bg-base/50 border border-white/10 flex items-center justify-center backdrop-blur-sm group-hover:scale-105 transition-transform duration-300">
+                <i data-lucide="${p.icon}" class="w-10 h-10 sm:w-12 sm:h-12 text-primary"></i>
+              </span>
+            </div>
+            <div class="absolute top-3 left-3 flex gap-1.5">
+              ${p.tags.map(t => `<span class="rounded-full bg-base/70 backdrop-blur-sm border border-white/10 px-2.5 py-1 text-[11px] font-medium text-secondary">${t}</span>`).join('')}
+            </div>
+            <div class="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full bg-base/70 backdrop-blur-sm border border-white/10 px-2.5 py-1 text-[11px] font-medium">
+              <i data-lucide="badge-check" class="w-3 h-3 text-primary"></i>
+              ${p.rank}
+            </div>
+          </div>
+          <div class="p-4 sm:p-5">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 rounded-full bg-high px-2.5 py-1 text-[11px] font-medium text-primary">
+                <i data-lucide="${gameChipFor(p.key).icon}" class="w-3 h-3"></i>
+                ${p.game}
+              </span>
+              <span class="text-[11px] text-white/40">Mã: TTZ-${String(1000 + i).slice(1)}</span>
+            </div>
+            <h3 class="mt-2.5 font-bold text-[15px] leading-snug group-hover:text-primary transition">${p.title}</h3>
+            <div class="mt-4 flex items-center justify-between gap-3">
+              <div>
+                <p class="text-[11px] text-white/40">Giá chỉ</p>
+                <p class="text-lg font-black text-primary">${formatPrice(p.price)}</p>
+              </div>
+              <button onclick="openModal(${i})" class="rounded-full bg-primary px-4 py-2.5 text-xs font-bold text-base hover:bg-[#c3d9fc] hover:shadow-glow transition whitespace-nowrap">
+                XEM CHI TIẾT
+              </button>
+            </div>
+          </div>
+        </article>`).join('');
+
+      lucide.createIcons();
+    }
+
+    function drawQR() {
+      const size = 29;
+      const svg = document.getElementById('qr');
+      svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+      let seed = 20240801;
+      const rand = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+      let html = '';
+      const isFinder = (x, y) => (x < 7 && y < 7) || (x >= size - 7 && y < 7) || (x < 7 && y >= size - 7);
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          if (isFinder(x, y) || rand() < 0.45) continue;
+          html += `<rect x="${x}" y="${y}" width="1.02" height="1.02" fill="#1e1f25"/>`;
+        }
+      }
+      const finder = (fx, fy) => {
+        let f = '';
+        for (let y = 0; y < 7; y++) for (let x = 0; x < 7; x++) {
+          const border = x === 0 || y === 0 || x === 6 || y === 6;
+          const core = x >= 2 && x <= 4 && y >= 2 && y <= 4;
+          if (border || core) f += `<rect x="${fx + x}" y="${fy + y}" width="1" height="1" fill="#121318"/>`;
+        }
+        return f;
+      };
+      html += finder(0, 0) + finder(size - 7, 0) + finder(0, size - 7);
+      svg.innerHTML = html;
+    }
+
+    function openModal(idx) {
+      const p = PRODUCTS[idx];
+      const game = gameChipFor(p.key);
+      document.getElementById('modalBody').innerHTML = `
+        <div class="flex items-center justify-between gap-3 p-5 border-b border-line/60 sticky top-0 bg-surface/95 backdrop-blur-xl rounded-t-[28px]">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+              <i data-lucide="${p.icon}" class="w-5 h-5 text-base"></i>
+            </span>
+            <div>
+              <h3 class="font-bold leading-tight">${p.title}</h3>
+              <p class="text-xs text-white/50">${game.label} · Mã TTZ-${String(1000 + idx).slice(1)}</p>
+            </div>
+          </div>
+          <button onclick="closeModal()" class="w-9 h-9 rounded-full bg-high flex items-center justify-center hover:bg-[#2f3138] transition shrink-0">
+            <i data-lucide="x" class="w-4.5 h-4.5 text-white/70"></i>
+          </button>
+        </div>
+
+        <div class="p-5 space-y-5">
+          <div class="flex flex-wrap gap-2">
+            ${p.tags.map(t => `<span class="rounded-full bg-high border border-line px-3 py-1 text-xs font-medium text-secondary">${t}</span>`).join('')}
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-primary/15 border border-primary/25 px-3 py-1 text-xs font-medium text-primary">
+              <i data-lucide="shield-check" class="w-3 h-3"></i> Bảo hành trọn đời
+            </span>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2">
+            ${Object.entries(p.stats).map(([k, v]) => `
+              <div class="rounded-2xl bg-base border border-line px-3 py-3 text-center">
+                <p class="text-sm font-bold text-primary">${v}</p>
+                <p class="text-[11px] text-white/40 mt-0.5">${k}</p>
+              </div>`).join('')}
+          </div>
+
+          <p class="text-sm text-white/60 leading-relaxed">${p.desc}</p>
+
+          <div class="rounded-[20px] bg-base border border-line p-4">
+            <p class="text-xs font-medium text-white/50 uppercase tracking-wide">Quét mã VietQR để thanh toán</p>
+            <div class="mt-4 flex items-center gap-4">
+              <div class="w-36 h-36 sm:w-40 sm:h-40 bg-white rounded-2xl p-3 shadow-glow shrink-0">
+                <svg id="qr" class="w-full h-full block" role="img" aria-label="Mã VietQR"></svg>
+              </div>
+              <div class="min-w-0">
+                <div class="rounded-2xl bg-surface border border-line p-3">
+                  <p class="text-[11px] text-white/40">Ngân hàng</p>
+                  <p class="text-sm font-bold flex items-center gap-1.5">
+                    <span class="w-6 h-6 rounded-md bg-[#a8c7fa] flex items-center justify-center text-[8px] font-black text-base">VCB</span>
+                    Vietcombank
+                  </p>
+                </div>
+                <div class="mt-2 rounded-2xl bg-surface border border-line p-3">
+                  <p class="text-[11px] text-white/40">Số tài khoản</p>
+                  <p class="text-sm font-bold font-mono tracking-wider">1018 2022 22</p>
+                </div>
+                <div class="mt-2 rounded-2xl bg-surface border border-line p-3">
+                  <p class="text-[11px] text-white/40">Số tiền</p>
+                  <p class="text-sm font-black text-primary">${formatPrice(p.price)}</p>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center gap-2 text-xs text-white/50">
+              <i data-lucide="zap" class="w-3.5 h-3.5 text-primary shrink-0"></i>
+              Acc sẽ được giao tự động ngay sau khi thanh toán thành công
+            </div>
+          </div>
+
+          <div class="flex gap-2.5">
+            <button onclick="copyText('1018202222', 'Đã copy số tài khoản')" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-high border border-line px-4 py-3 text-sm font-medium hover:bg-[#2f3138] transition">
+              <i data-lucide="copy" class="w-4 h-4 text-secondary"></i> Copy STK
+            </button>
+            <button onclick="copyText('${p.title}', 'Đã copy nội dung chuyển khoản')" class="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 text-sm font-bold text-base hover:bg-[#c3d9fc] transition shadow-glow">
+              Tôi đã chuyển khoản
+              <i data-lucide="check" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="flex items-start gap-3 rounded-2xl bg-primary/10 border border-primary/20 p-3.5 text-xs text-white/60 leading-relaxed">
+            <i data-lucide="message-circle" class="w-4 h-4 text-primary shrink-0 mt-0.5"></i>
+            Gặp vấn đề khi thanh toán? Liên hệ fanpage <span class="text-primary font-medium">tethinhz.shop</span> hoặc số hotline <span class="text-primary font-medium">0981 222 888</span> để được hỗ trợ ngay.
+          </div>
+        </div>`;
+
+      document.getElementById('modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      drawQR();
+      lucide.createIcons();
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    let toastTimer;
+    function copyText(text, msg) {
+      navigator.clipboard.writeText(text);
+      const toast = document.getElementById('toast');
+      toast.innerHTML = `
+        <div class="animate-toast flex items-center gap-2 rounded-full bg-[#282a2f] border border-line px-4 py-2.5 text-sm shadow-card">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-primary"></i>
+          <span class="font-medium">${msg}</span>
+        </div>`;
+      lucide.createIcons();
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.innerHTML = '', 2400);
+    }
+
+    function toggleMobileSearch() {
+      document.getElementById('mobileSearch').classList.toggle('hidden');
+    }
+
+    function scrollTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+    function resetFilters() {
+      state.game = 'all'; state.price = 'all'; state.search = '';
+      document.getElementById('searchInput').value = '';
+      renderChips(); renderProducts();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    renderChips();
+    renderProducts();
+  </script>
+</body>
+</html>
